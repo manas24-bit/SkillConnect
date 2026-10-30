@@ -1,0 +1,164 @@
+{
+  "users": [
+    {
+      "id": "student-demo-id",
+      "email": "student@skillconnect.com",
+      "password": "$2a$10$EcFYTvCXUD.3H9HFj21mBuhRL4ex5Tp0pTmSOG3vgIncXWfjWpUkW",
+      "full_name": "Alex Johnson",
+      "user_type": "student",
+      "college": "Tech Institute of Science",
+      "branch": "Computer Science",
+      "year": "3rd Year",
+      "is_anonymous": false,
+      "skills": "[\"JavaScript\",\"Python\",\"Data Structures\"]",
+      "xp_points": 350,
+      "level": 4,
+      "profile_photo": null,
+      "created_at": "2026-10-29T19:10:03.295Z"
+    },
+    {
+      "id": "mentor-demo-id",
+      "email": "mentor@skillconnect.com",
+      "password": "$2a$10$EcFYTvCXUD.3H9HFj21mBuhRL4ex5Tp0pTmSOG3vgIncXWfjWpUkW",
+      "full_name": "Dr. Sarah Mitchell",
+      "user_type": "mentor",
+      "college": "State University",
+      "branch": "Software Engineering",
+      "year": "Faculty",
+      "is_anonymous": false,
+      "skills": "[\"System Design\",\"Node.js\",\"Machine Learning\",\"Databases\"]",
+      "xp_points": 1200,
+      "level": 12,
+      "profile_photo": null,
+      "created_at": "2026-10-29T19:10:03.296Z"
+    }
+  ],
+  "mentor_profiles": [
+    {
+      "id": "mentor-profile-demo-id",
+      "user_id": "mentor-demo-id",
+      "experience": "5+ years",
+      "expertise": "[\"System Design\",\"Node.js\",\"Machine Learning\",\"Databases\"]",
+      "badges": "[\"Top Mentor\",\"Quick Responder\",\"Verified Educator\"]",
+      "availability": "[\"Mon-Wed: 4pm - 7pm\",\"Sat: 10am - 2pm\"]",
+      "bio": "Senior Software Architect passionate about helping students master computer science fundamentals and career prep.",
+      "hourly_rate": 0,
+      "max_students": 25,
+      "verified": 1,
+      "joined_date": "2024-01-10",
+      "rating": 4.9,
+      "total_sessions": 42,
+      "students_helped": 88,
+      "updated_at": "2026-10-29T19:10:03.296Z"
+    }
+  ],
+  "doubts": [
+    {
+      "id": "doubt-demo-1",
+      "user_id": "student-demo-id",
+      "title": "How to implement Dijkstra Algorithm in JavaScript?",
+      "description": "I understand the theory behind shortest paths, but I am struggling with implementing a priority queue efficiently in JS without external libraries.",
+      "subject": "Data Structures",
+      "category": "Algorithms",
+      "image_path": null,
+      "is_anonymous": false,
+      "urgency": "medium",
+      "status": "assigned",
+      "assigned_mentor_id": "mentor-profile-demo-id",
+      "solution": null,
+      "created_at": "2026-10-28T19:10:03.296Z",
+      "resolved_at": null
+    },
+    {
+      "id": "doubt-demo-2",
+      "user_id": "student-demo-id",
+      "title": "Understanding SQL Indexing and B-Trees",
+      "description": "Can someone explain when composite indexes are used vs single column indexes with examples?",
+      "subject": "Database Systems",
+      "category": "Databases",
+      "image_path": null,
+      "is_anonymous": false,
+      "urgency": "high",
+      "status": "resolved",
+      "assigned_mentor_id": "mentor-profile-demo-id",
+      "solution": "Composite indexes follow the Leftmost Prefix Rule. For an index on (A, B, C), queries filtering by A, or A and B, or A, B and C will utilize the index. Filtering by only B or C alone will not use the composite index tree.",
+      "created_at": "2026-10-27T19:10:03.296Z",
+      "resolved_at": "2026-10-29T07:10:03.296Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "session-demo-1",
+      "user_id": "student-demo-id",
+      "mentor_id": "mentor-profile-demo-id",
+      "doubt_id": "doubt-demo-1",
+      "session_type": "1-on-1 Mentorship",
+      "scheduled_time": "2026-10-30 19:10:03",
+      "duration": 60,
+      "notes": "Discussion on Graph algorithms and mock technical interview questions.",
+      "meeting_link": "https://meet.google.com/demo-skillconnect",
+      "status": "scheduled",
+      "created_at": "2026-10-29T19:10:03.296Z"
+    }
+  ],
+  "study_resources": [
+    {
+      "id": "resource-demo-1",
+      "user_id": "mentor-demo-id",
+      "title": "DSA Comprehensive Cheat Sheet",
+      "description": "Time and space complexity cheat sheet covering Trees, Graphs, Sorting, and Dynamic Programming.",
+      "subject": "Data Structures",
+      "category": "Study Guide",
+      "file_path": "/uploads/study-materials/dsa-guide.pdf",
+      "access_level": "public",
+      "downloads_count": 145,
+      "created_at": "2026-10-26T19:10:03.296Z"
+    },
+    {
+      "id": "resource-demo-2",
+      "user_id": "mentor-demo-id",
+      "title": "Full Stack Web Architecture Best Practices",
+      "description": "REST API design, JWT security, CORS configuration, and database indexing.",
+      "subject": "Web Development",
+      "category": "Architecture",
+      "file_path": "/uploads/study-materials/web-arch.pdf",
+      "access_level": "public",
+      "downloads_count": 98,
+      "created_at": "2026-10-25T19:10:03.296Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-demo-1",
+      "doubt_id": "doubt-demo-1",
+      "sender_id": "student-demo-id",
+      "receiver_id": "mentor-demo-id",
+      "message": "Hello Dr. Sarah! Looking forward to our session on Dijkstra algorithm.",
+      "image_path": null,
+      "is_read": true,
+      "created_at": "2026-10-28T23:10:03.296Z"
+    },
+    {
+      "id": "msg-demo-2",
+      "doubt_id": "doubt-demo-1",
+      "sender_id": "mentor-demo-id",
+      "receiver_id": "student-demo-id",
+      "message": "Hi Alex! Review binary min-heaps beforehand; we will build a fast priority queue from scratch.",
+      "image_path": null,
+      "is_read": true,
+      "created_at": "2026-10-29T01:10:03.296Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-demo-1",
+      "user_id": "student-demo-id",
+      "type": "session",
+      "title": "Mentorship Session Confirmed",
+      "message": "Your 1-on-1 session with Dr. Sarah Mitchell has been scheduled.",
+      "related_id": "session-demo-1",
+      "is_read": false,
+      "created_at": "2026-10-29T19:10:03.296Z"
+    }
+  ]
+}

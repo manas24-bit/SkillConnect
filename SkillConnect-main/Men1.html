@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SKILL CONNECT - Mentor Sign-Up</title>
+    <!-- Cloudinary SDK -->
+    <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="url"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        input[type="url"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .multi-select {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .file-upload {
+            position: relative;
+            border: 2px dashed #667eea;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            background-color: #f0f4ff;
+            border-color: #764ba2;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .file-upload-text {
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .file-upload-sub {
+            color: #999;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .uploaded-files {
+            margin-top: 15px;
+        }
+
+        .file-item {
+            background: #f0f4ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .remove-btn:hover {
+            background: #ff3838;
+        }
+
+        .time-slot-group {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .time-slot-group label {
+            margin-bottom: 10px;
+        }
+
+        .time-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .reset-btn {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .reset-btn:hover {
+            background: #dee2e6;
+        }
+
+        .success-message {
+            display: none;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #a7f3d0;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        .file-status {
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .multi-select {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 SKILL CONNECT</h1>
+        <div style="margin-top: 20px; font-size: 1.05em; font-style: italic; background: rgba(255,255,255,0.15); padding: 15px 30px; border-radius: 8px; max-width: 700px; margin-left: auto; margin-right: auto; backdrop-filter: blur(10px);">
+            <span style="font-size: 1.5em; margin-right: 10px;">💡</span>
+            "The greatest gift you can give to someone is helping them unlock their potential. Become a mentor, inspire futures, and leave a lasting impact on the next generation of innovators."
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="success-message" id="successMessage">
+            ✓ Form submitted successfully! Thank you for signing up as a mentor.
+        </div>
+
+        <form id="mentorForm">
+            <!-- SECTION 1: BASIC ACCOUNT DETAILS -->
+            <h2 class="section-title">1. Basic Account Details</h2>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <label for="profilePhoto">Profile Photo (Optional)</label>
+                <div class="file-upload" onclick="document.getElementById('profilePhoto').click()">
+                    <div class="file-upload-text">📷 Click to upload profile photo</div>
+                    <div class="file-upload-sub">JPG, PNG, GIF (Max 5MB)</div>
+                    <input type="file" id="profilePhoto" name="profilePhoto" accept="image/*">
+                </div>
+                <div id="photoName" class="file-status"></div>
+            </div>
+
+            <!-- SECTION 2: EDUCATIONAL / PROFESSIONAL INFORMATION -->
+            <h2 class="section-title">2. Educational / Professional Information</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="institution">Current Institution or Company <span class="required">*</span></label>
+                    <input type="text" id="institution" name="institution" required>
+                </div>
+                <div class="form-group">
+                    <label for="qualification">Highest Qualification <span class="required">*</span></label>
+                    <select id="qualification" name="qualification" required>
+                        <option value="">Select...</option>
+                        <option value="High School">High School</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Bachelor's">Bachelor's Degree</option>
+                        <option value="Master's">Master's Degree</option>
+                        <option value="PhD">PhD</option>
+                        <option value="Certification">Professional Certification</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expertise">Area of Expertise <span class="required">*</span></label>
+                    <input type="text" id="expertise" name="expertise" placeholder="e.g., Web Dev, Design, Data Science" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years of Experience / Current Year of Study <span class="required">*</span></label>
+                    <input type="text" id="experience" name="experience" placeholder="e.g., 5 years or 3rd Year" required>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <label>Skills or Topics to Mentor In <span class="required">*</span></label>
+                <div class="multi-select">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="Web Development">
+                        <label>Web Development</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="Mobile Development">
+                        <label>Mobile Development</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="Data Science">
+                        <label>Data Science</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="UI/UX Design">
+                        <label>UI/UX Design</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="Cloud Computing">
+                        <label>Cloud Computing</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="Cybersecurity">
+                        <label>Cybersecurity</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="AI/ML">
+                        <label>AI/ML</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="skills" value="DevOps">
+                        <label>DevOps</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: MENTORSHIP PREFERENCES -->
+            <h2 class="section-title">3. Mentorship Preferences</h2>
+
+            <div class="form-group full">
+                <label>Mentorship Focus Areas <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="focusArea" value="Career Guidance">
+                        <label>Career Guidance</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="focusArea" value="Project Help">
+                        <label>Project Help</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="focusArea" value="Resume / Interview Prep">
+                        <label>Resume / Interview Prep</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="focusArea" value="Hackathons Prep">
+                        <label>Hackathons Prep</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <label>Weekly Availability <span class="required">*</span></label>
+                <div style="margin-bottom: 15px;">
+                    <label style="margin-bottom: 10px;">Days Available</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Monday">
+                            <label>Monday</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Tuesday">
+                            <label>Tuesday</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Wednesday">
+                            <label>Wednesday</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Thursday">
+                            <label>Thursday</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Friday">
+                            <label>Friday</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Saturday">
+                            <label>Saturday</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="daysAvailable" value="Sunday">
+                            <label>Sunday</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label style="margin-bottom: 10px;">Time Slots (specify)</label>
+                    <div class="time-inputs">
+                        <input type="time" name="startTime" placeholder="Start Time" required>
+                        <input type="time" name="endTime" placeholder="End Time" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <label>Preferred Communication Mode <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="communication" value="Chat">
+                        <label>Chat</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="communication" value="Video Call">
+                        <label>Video Call</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="communication" value="Email">
+                        <label>Email</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: ABOUT SECTION -->
+            <h2 class="section-title">4. About You</h2>
+
+            <div class="form-group full">
+                <label for="bio">Detailed Bio / Experience Summary <span class="required">*</span></label>
+                <textarea id="bio" name="bio" placeholder="Tell us about yourself, your experience, and what you're passionate about..." required></textarea>
+            </div>
+
+            <!-- SECTION 5: VERIFICATION & AGREEMENTS -->
+            <h2 class="section-title">5. Verification & Agreements</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn Profile URL (optional)</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+                <div class="form-group">
+                    <label for="idUpload">ID / Student ID Upload (optional)</label>
+                    <div class="file-upload" onclick="document.getElementById('idUpload').click()" style="padding: 20px;">
+                        <div class="file-upload-text">📄 Click to upload ID</div>
+                        <div class="file-upload-sub">PDF, JPG, PNG (Max 5MB)</div>
+                        <input type="file" id="idUpload" name="idUpload" accept=".pdf,.jpg,.jpeg,.png">
+                    </div>
+                    <div id="idName" class="file-status"></div>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">Accept Terms & Conditions <span class="required">*</span></label>
+                </div>
+            </div>
+
+            <div class="form-group full">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Accept Privacy Policy <span class="required">*</span></label>
+                </div>
+            </div>
+
+            <!-- SECTION 6: ENHANCEMENTS -->
+            <h2 class="section-title">6. Enhancements</h2>
+
+            <div class="form-group full">
+                <label for="achievements">Achievements / Certifications</label>
+                <div class="file-upload" onclick="document.getElementById('achievements').click()">
+                    <div class="file-upload-text">📜 Click to upload certificates</div>
+                    <div class="file-upload-sub">PDF, JPG, PNG (Max 10MB per file, up to 5 files)</div>
+                    <input type="file" id="achievements" name="achievements" accept=".pdf,.jpg,.jpeg,.png" multiple>
+                </div>
+                <div class="uploaded-files" id="achievementsFiles"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="languages">Languages Spoken</label>
+                    <input type="text" id="languages" name="languages" placeholder="e.g., English, Hindi, Spanish">
+                </div>
+                <div class="form-group">
+                    <label for="github">GitHub Profile URL (optional)</label>
+                    <input type="url" id="github" name="github" placeholder="https://github.com/yourusername">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="portfolio">Portfolio / Other (optional)</label>
+                    <input type="url" id="portfolio" name="portfolio" placeholder="https://yourportfolio.com">
+                </div>
+                <div class="form-group">
+                    <label for="twitter">Social Media Links (optional)</label>
+                    <input type="url" id="twitter" name="twitter" placeholder="https://twitter.com/yourhandle">
+                </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn">Submit Application</button>
+                <button type="reset" class="reset-btn">Clear Form</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { 
+            auth, 
+            db, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword,
+            updateProfile, 
+            collection, 
+            addDoc,
+            query,
+            where,
+            getDocs
+        } from './firebase-config.js';
+
+        import { 
+            uploadToCloudinary, 
+            uploadMultipleToCloudinary 
+        } from './cloudinary-config.js';
+
+        const form = document.getElementById('mentorForm');
+        let achievementFiles = [];
+        let profilePhotoFile = null;
+        let idUploadFile = null;
+
+        // Enhanced file upload handlers with better validation
+        document.getElementById('profilePhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (validateFile(file, ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'], 5 * 1024 * 1024)) {
+                    profilePhotoFile = file;
+                    document.getElementById('photoName').textContent = '✓ ' + file.name;
+                    document.getElementById('photoName').style.color = '#10b981';
+                } else {
+                    this.value = '';
+                    profilePhotoFile = null;
+                    document.getElementById('photoName').textContent = '❌ Invalid file';
+                    document.getElementById('photoName').style.color = '#ef4444';
+                }
+            }
+        });
+
+        document.getElementById('idUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (validateFile(file, ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'], 5 * 1024 * 1024)) {
+                    idUploadFile = file;
+                    document.getElementById('idName').textContent = '✓ ' + file.name;
+                    document.getElementById('idName').style.color = '#10b981';
+                } else {
+                    this.value = '';
+                    idUploadFile = null;
+                    document.getElementById('idName').textContent = '❌ Invalid file';
+                    document.getElementById('idName').style.color = '#ef4444';
+                }
+            }
+        });
+
+        document.getElementById('achievements').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            const maxFiles = 5;
+            const maxSize = 10 * 1024 * 1024;
+
+            if (files.length > maxFiles) {
+                alert(`You can upload a maximum of ${maxFiles} files`);
+                e.target.value = '';
+                return;
+            }
+
+            achievementFiles = [];
+            const container = document.getElementById('achievementsFiles');
+            container.innerHTML = '';
+
+            files.forEach((file, index) => {
+                if (validateFile(file, ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'], maxSize)) {
+                    achievementFiles.push(file);
+
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <span>📄 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)}MB)</span>
+                        <button type="button" class="remove-btn" data-index="${index}">Remove</button>
+                    `;
+                    container.appendChild(fileItem);
+                } else {
+                    alert(`Skipping ${file.name}: Invalid file type or too large`);
+                }
+            });
+
+            // Add event listeners to remove buttons
+            container.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    achievementFiles.splice(index, 1);
+                    this.parentElement.remove();
+                });
+            });
+        });
+
+        // File validation function
+        function validateFile(file, allowedTypes, maxSize) {
+            if (!allowedTypes.includes(file.type)) {
+                alert(`Invalid file type for ${file.name}. Allowed: ${allowedTypes.join(', ')}`);
+                return false;
+            }
+            
+            if (file.size > maxSize) {
+                alert(`File ${file.name} is too large. Maximum size: ${maxSize / 1024 / 1024}MB`);
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Enhanced form submission with progress tracking
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            console.log('Starting mentor registration with Cloudinary file uploads...');
+
+            // Get all form data
+            const formData = getFormData();
+            
+            // Validate required fields
+            if (!formData.fullName || !formData.email || !formData.password) {
+                alert('Please fill in all required fields');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Uploading Files...';
+            submitBtn.disabled = true;
+
+            try {
+                let user;
+                const uploadedFiles = {
+                    profilePhoto: null,
+                    idUpload: null,
+                    achievements: []
+                };
+
+                // Upload files to Cloudinary with progress feedback
+                submitBtn.textContent = 'Uploading Profile Photo...';
+                if (profilePhotoFile) {
+                    try {
+                        const result = await uploadToCloudinary(profilePhotoFile, 'skillconnect/profile-photos', 'skillconnect_profile_photos');
+                        uploadedFiles.profilePhoto = formatCloudinaryResponse(result);
+                    } catch (error) {
+                        console.error('Profile photo upload failed:', error);
+                        throw new Error('Profile photo upload failed. Please try again.');
+                    }
+                }
+
+                submitBtn.textContent = 'Uploading ID Document...';
+                if (idUploadFile) {
+                    try {
+                        const result = await uploadToCloudinary(idUploadFile, 'skillconnect/id-documents', 'skillconnect_id_documents');
+                        uploadedFiles.idUpload = formatCloudinaryResponse(result);
+                    } catch (error) {
+                        console.error('ID upload failed:', error);
+                        throw new Error('ID document upload failed. Please try again.');
+                    }
+                }
+
+                submitBtn.textContent = 'Uploading Achievement Files...';
+                if (achievementFiles.length > 0) {
+                    try {
+                        const results = await uploadMultipleToCloudinary(achievementFiles, 'skillconnect/achievements', 'skillconnect_achievements');
+                        uploadedFiles.achievements = results.map(result => formatCloudinaryResponse(result));
+                    } catch (error) {
+                        console.error('Achievements upload failed:', error);
+                        throw new Error('Achievement files upload failed. Please try again.');
+                    }
+                }
+
+                submitBtn.textContent = 'Creating Account...';
+                
+                // Create user account
+                user = await createUserAccount(formData.email, formData.password, formData.fullName);
+                
+                // Save mentor data to Firestore
+                await saveMentorData(user.uid, formData, uploadedFiles);
+
+                // Show success message
+                showSuccessMessage();
+
+                // Redirect to login page
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 3000);
+
+            } catch (error) {
+                handleFormError(error, submitBtn, originalText);
+            }
+        });
+
+        // Helper functions
+        function getFormData() {
+            return {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                phone: document.getElementById('phone').value,
+                institution: document.getElementById('institution').value,
+                qualification: document.getElementById('qualification').value,
+                expertise: document.getElementById('expertise').value,
+                experience: document.getElementById('experience').value,
+                bio: document.getElementById('bio').value,
+                linkedin: document.getElementById('linkedin').value,
+                languages: document.getElementById('languages').value,
+                github: document.getElementById('github').value,
+                portfolio: document.getElementById('portfolio').value,
+                twitter: document.getElementById('twitter').value,
+                skills: Array.from(document.querySelectorAll('input[name="skills"]:checked')).map(cb => cb.value),
+                focusAreas: Array.from(document.querySelectorAll('input[name="focusArea"]:checked')).map(cb => cb.value),
+                daysAvailable: Array.from(document.querySelectorAll('input[name="daysAvailable"]:checked')).map(cb => cb.value),
+                communicationModes: Array.from(document.querySelectorAll('input[name="communication"]:checked')).map(cb => cb.value),
+                startTime: document.querySelector('input[name="startTime"]').value,
+                endTime: document.querySelector('input[name="endTime"]').value
+            };
+        }
+
+        function formatCloudinaryResponse(result) {
+            return {
+                url: result.secure_url,
+                public_id: result.public_id,
+                format: result.format,
+                bytes: result.bytes,
+                width: result.width,
+                height: result.height,
+                created_at: result.created_at
+            };
+        }
+
+        async function createUserAccount(email, password, fullName) {
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+                await updateProfile(user, { displayName: fullName });
+                return user;
+            } catch (error) {
+                if (error.code === 'auth/email-already-in-use') {
+                    // Try to login instead
+                    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    await updateProfile(user, { displayName: fullName });
+                    return user;
+                } else {
+                    throw error;
+                }
+            }
+        }
+
+        async function saveMentorData(uid, formData, uploadedFiles) {
+            // Check if mentor already exists
+            const mentorsQuery = query(collection(db, 'mentors'), where('uid', '==', uid));
+            const mentorsSnapshot = await getDocs(mentorsQuery);
+            
+            if (!mentorsSnapshot.empty) {
+                throw new Error('MENTOR_ALREADY_EXISTS');
+            }
+
+            const mentorData = {
+                uid: uid,
+                ...formData,
+                userType: 'mentor',
+                createdAt: new Date().toISOString(),
+                profileCompleted: true,
+                files: uploadedFiles
+            };
+
+            await addDoc(collection(db, 'mentors'), mentorData);
+        }
+
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            successMessage.innerHTML = `
+                ✅ <strong>Mentor account created successfully!</strong><br>
+                📁 All files uploaded to Cloudinary<br>
+                🔄 Redirecting to login page...
+            `;
+            successMessage.style.background = '#d1fae5';
+            successMessage.style.color = '#065f46';
+            successMessage.style.border = '1px solid #a7f3d0';
+        }
+
+        function handleFormError(error, submitBtn, originalText) {
+            console.error('Error:', error);
+            
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+
+            let errorMessage = 'An error occurred: ';
+            
+            switch (error.code || error.message) {
+                case 'auth/email-already-in-use':
+                    errorMessage = 'This email is already registered. Please login instead.';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = 'Please enter a valid email address.';
+                    break;
+                case 'auth/weak-password':
+                    errorMessage = 'Password should be at least 6 characters.';
+                    break;
+                case 'MENTOR_ALREADY_EXISTS':
+                    errorMessage = 'Mentor profile already exists! Please login to your account.';
+                    break;
+                default:
+                    errorMessage += error.message;
+            }
+            
+            alert('❌ ' + errorMessage);
+        }
+
+        // Handle form reset
+        form.addEventListener('reset', function() {
+            document.getElementById('achievementsFiles').innerHTML = '';
+            achievementFiles = [];
+            profilePhotoFile = null;
+            idUploadFile = null;
+            document.getElementById('photoName').textContent = '';
+            document.getElementById('idName').textContent = '';
+        });
+    </script>
+</body>
+</html>

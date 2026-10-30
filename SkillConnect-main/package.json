@@ -1,0 +1,31 @@
+{
+  "name": "skillconnect-backend",
+  "version": "1.0.0",
+  "description": "SkillConnect - Mentor-Student Doubt Resolution Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "init-db": "mysql -u root -p < database.sql"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "mentorship",
+    "education",
+    "doubt-resolution",
+    "nodejs",
+    "mysql"
+  ],
+  "author": "SkillConnect Team",
+  "license": "MIT"
+}
